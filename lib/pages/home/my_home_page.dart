@@ -28,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Scaffold(
         appBar: const HomeBar(),
         body: HomeBody(),
-        floatingActionButton: HomeFabButton(),
+        floatingActionButton: const HomeFabButton(),
       ),
     );
   }
@@ -70,18 +70,41 @@ class HomeBody extends StatelessWidget {
 }
 
 class HomeFabButton extends StatelessWidget {
-  HomeFabButton({super.key});
+  const HomeFabButton({super.key});
 
-  final HomePageState homeState = Get.put(HomePageState());
+  @override
+  Widget build(BuildContext context) {
+    return MediaQuery.of(context).size.width < 600
+        ? const SmalFab()
+        : const LargFab();
+  }
+}
+
+class SmalFab extends StatelessWidget {
+  const SmalFab({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomePageState>(
-      builder: (_) => FloatingActionButton(
+      builder: (x) => FloatingActionButton(
+          onPressed: () {
+            x.createNewTask(context);
+          },
+          child: const Icon(Icons.add)),
+    );
+  }
+}
+
+class LargFab extends StatelessWidget {
+  const LargFab({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<HomePageState>(
+      builder: (x) => FloatingActionButton.large(
         onPressed: () {
-          homeState.createNewTask(context);
+          x.createNewTask(context);
         },
-        //label: const Text("New"),
         child: const Icon(Icons.add),
       ),
     );
