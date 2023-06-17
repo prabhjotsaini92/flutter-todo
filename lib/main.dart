@@ -9,6 +9,7 @@ void main() async {
   // open the box
   var listBox = await Hive.openBox("listBox");
 
+  // Main app
   runApp(const MyApp());
 }
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     const Color color = Colors.purple;
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Todo App',
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
       theme: ThemeData(
