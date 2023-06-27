@@ -22,13 +22,13 @@ class DialogBox extends StatelessWidget {
       ),
       actions: [
         TextButton(
+          onPressed: onCancel,
+          child: const Text("Cancle"),
+        ),
+        TextButton(
           onPressed: onSave,
           child: const Text("Ok"),
         ),
-        TextButton(
-          onPressed: onCancel,
-          child: const Text("Cancle"),
-        )
       ],
     );
   }
