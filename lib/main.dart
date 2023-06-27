@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const Color color = Colors.purple;
+    const Color color = Colors.red;
     return MaterialApp(
       title: 'Todo App',
       debugShowCheckedModeBanner: false,
